@@ -1,0 +1,71 @@
+.video-container {
+  margin: 30px auto;
+  padding: 10px;
+  width: 90%;
+  height: 90px;
+  max-width: 320px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* 9:16 Aspect Ratio Fix */
+.video-container video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 15px;
+}
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap; /* mobile me next line me aa jayega */
+  margin-top: 30px;
+}
+
+.video-container {
+  width: 220px; /* chhota size */
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* 9:16 Reel Ratio */
+.video-container video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Hover effect */
+.video-container:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff9ec4, #ffc3a0);
+  overflow-x: hidden;
+}
+.btn-box {
+  text-align: center;
+  margin: 40px 0; /* upar niche space */
+}
+
+.btn-box button {
+  padding: 12px 25px;
+  font-size: 16px;
+  background: linear-gradient(45deg, #ff4da6, #ff99cc);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}

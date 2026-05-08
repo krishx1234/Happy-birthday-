@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Memories ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  background: linear-gradient(to right, #ff4e9b, #ff99cc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Slider box */
+.slider {
+  width: 1000px;
+  height: 800px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* Slide div */
+.slide {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Active slide */
+.slide.active {
+  display: block;
+}
+
+/* Buttons */
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+</style>
+
+</head>
+<body>
+
+<div class="slider">
+
+  <div class="slide active">
+    <img src="images/imagesimg1.jpeg">
+  </div>
+
+  <div class="slide">
+    <img src="images/imagesimg2.jpeg">
+  </div>
+
+  <div class="slide">
+    <img src="images/imagesimg3.jpeg">
+  </div>
+
+  <div class="slide">
+    <img src="images/imagesimg4.jpeg">
+  </div>
+
+  <div class="slide">
+    <img src="images/imagesimg5.jpeg">
+  </div>
+
+  <div class="slide">
+    <img src="images/imagesimg6.jpeg">
+  </div>
+
+  <div class="slide">
+    <img src="images/imagesimg7.jpeg">
+  </div>
+
+  <div class="slide">
+    <img src="images/imagesimg8.jpeg">
+  </div>
+
+  <div class="slide">
+    <img src="images/images1.jpeg">
+  </div>
+
+  <div class="slide">
+    <img src="images/images2.jpeg">
+    </div>
+
+  <div class="slide">
+    <img src="images/images3.jpeg">
+  </div>
+
+  <div class="slide">
+    <img src="images/imagesimg9.jpeg">
+  </div>
+
+  <div class="slide">
+    <img src="images/imagesimg10.jpeg">
+  </div>
+
+  </div>
+
+</div>
+
+<button class="prev" onclick="prevSlide()">❮</button>
+<button class="next" onclick="nextSlide()">❯</button>
+
+<audio id="bgMusic" loop>
+  <source src="music/music.mp3">
+</audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+// Check if already playing
+if (localStorage.getItem("musicPlaying") === "true") {
+  music.currentTime = localStorage.getItem("musicTime") || 0;
+}
+
+window.addEventListener("load", () => {
+  music.play().then(() => {
+    localStorage.setItem("musicPlaying", "true");
+  }).catch(() => {
+    document.addEventListener("click", () => {
+      music.play();
+      localStorage.setItem("musicPlaying", "true");
+    }, { once: true });
+  });
+});
+
+// Save time before leaving page
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+</script>
+
+
+<script>
+let index = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide(i) {
+  slides.forEach(s => s.classList.remove("active"));
+  slides[i].classList.add("active");
+}
+
+function nextSlide() {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+}
+
+function prevSlide() {
+  index = (index - 1 + slides.length) % slides.length;
+  showSlide(index);
+}
+</script>
+
+</body>
+</html>

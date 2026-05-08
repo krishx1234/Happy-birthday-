@@ -1,0 +1,128 @@
+#lightbox{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+#lightbox img{
+    max-width:90%;
+    max-height:80%;
+    border-radius:20px;
+}
+
+#lightbox span{
+    position:absolute;
+    top:30px;
+    right:40px;
+    font-size:30px;
+    color:white;
+    cursor:pointer;
+}
+.heart{
+    position:fixed;
+    color:red;
+    animation:float 5s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);opacity:1;}
+    100%{transform:translateY(-100vh);opacity:0;}
+}
+.beat{
+    display:inline-block;
+    animation: heartbeat 1s infinite;
+    color:#ff1744;
+}
+
+@keyframes heartbeat{
+    0%{transform:scale(1);}
+    25%{transform:scale(1.2);}
+    40%{transform:scale(1);}
+    60%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
+.message {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 25px 30px;
+  border-radius: 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #ffe0ec, #e0f7ff);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Heading Style */
+.message h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+  color: #ff4d6d;
+  letter-spacing: 1px;
+}
+
+/* Paragraph Style */
+.message p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.7;
+}
+
+/* Glow Border Effect */
+.message::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #ff4d6d, #00c3ff, #ff4d6d);
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.6;
+}
+
+/* Hover Effect */
+.message:hover {
+  transform: scale(1.03);
+  transition: 0.3s ease;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.surprise {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.surprise button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #ff4d6d, #ff9a9e);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+  transition: 0.3s;
+}
+
+.surprise button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(255, 77, 109, 0.6);
+}

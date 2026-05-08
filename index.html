@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 💖</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="typing" id="typingText"></h1>
+    <p class="subtitle">
+        Today is all about celebrating you and the joy you bring to my life
+    </p>
+
+    <div class="hearts-line">
+        ❤️ 💖 💕 💗 💘
+    </div>
+
+    <button onclick="openGallery()">Start the Celebration 🎉</button>
+    
+<audio id="bgMusic" loop>
+  <source src="music/music.mp3">
+</audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+// Check if already playing
+if (localStorage.getItem("musicPlaying") === "true") {
+  music.currentTime = localStorage.getItem("musicTime") || 0;
+}
+
+window.addEventListener("load", () => {
+  music.play().then(() => {
+    localStorage.setItem("musicPlaying", "true");
+  }).catch(() => {
+    document.addEventListener("click", () => {
+      music.play();
+      localStorage.setItem("musicPlaying", "true");
+    }, { once: true });
+  });
+});
+
+// Save time before leaving page
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+</script>
+
+<script>
+    function openGallery(){
+        window.location.href = "gallery.html";
+    }
+</script>
+<script src="script.js"></script>
+</body>
+</html>

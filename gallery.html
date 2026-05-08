@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Our Memories ❤️</title>
+<link rel="stylesheet" href="gallery.css">
+
+<style>
+body{
+  margin:0;
+  padding:50px;
+  background:#F9F5DC;
+  font-family:sans-serif;
+}
+
+h2{
+  text-align:center;
+  color:#000000;
+  margin-bottom:50px;
+  font: italic;
+  
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,250px);
+  justify-content: center;
+  gap: 25px;
+}
+
+.photo{
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    opacity:0;
+    transform:translateY(60px);
+    animation:fadeUp 0.8s ease forwards;
+    color: white;
+}
+.photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s;
+}
+.photo img:hover{
+    transform:scale(1.05);
+}
+
+.photo:nth-child(1){ animation-delay:0.2s; }
+.photo:nth-child(2){ animation-delay:0.4s; }
+.photo:nth-child(3){ animation-delay:0.6s; }
+.photo:nth-child(4){ animation-delay:0.8s; }
+.photo:nth-child(5){ animation-delay:1s; }
+.photo:nth-child(6){ animation-delay:1.2s; }
+
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.photo img{
+  width:100%;
+  border-radius:15px;
+  transition:0.4s;
+}
+
+.photo img:hover{
+  transform:scale(1.05);
+}
+
+</style>
+</head>
+
+<body>
+<h2 class="birthday-title">
+   Happy Birthday To Dear 
+   <span class="beat">"Lopa" ❤️</span>
+</h2>
+<div class="gallery">
+  <div class="photo">
+    <img src="images/img1.jpeg" alt="">
+    <div class="overlay">Happy Brthday. Even if we're not okay right now you still mean so much to me.💖</div>
+  </div>
+
+  <div class="photo">
+    <img src="images/img2.jpeg" alt="">
+    <div class="overlay">With you everything feels right ✨</div>
+  </div>
+
+  <div class="photo">
+    <img src="images/img3.jpeg" alt="">
+    <div class="overlay">You make ordinary moments unforgettable😄</div>
+  </div>
+
+  <div class="photo">
+    <img src="images/img4.jpeg" alt="">
+    <div class="overlay">Even if you're mad at me i still care about you the same 🌙</div>
+  </div>
+
+  <div class="photo">
+    <img src="images/img5.jpeg" alt="">
+    <div class="overlay">No mattter how far we are, you're always close to my heart💫</div>
+  </div>
+
+  <div class="photo">
+    <img src="images/img6.jpeg" alt="">
+    <div class="overlay">My Favourite ❤️</div>
+  
+
+</div>
+<div id="lightbox">
+    <span onclick="closeLightbox()">✖</span>
+    <img id="lightbox-img">
+</div>
+<div class="message">
+  <h2>💖 A Special Message</h2>
+  <p>Happy Birthday Lopa 🎉</p>
+  <p>Tu meri sabse achhi friends me se ek hai 😊</p>
+  <p>Hamesha aise hi khush rehna aur smile karti rehna 💫</p>
+  <p>Stay blessed and keep shining ✨</p>
+</div>
+<div class="surprise">
+  <button onclick="goToSurprise()">🎁 Abhi Aur Surprise Hai</button>
+</div>
+<audio id="bgMusic" loop>
+  <source src="music/music.mp3">
+</audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+// Check if already playing
+if (localStorage.getItem("musicPlaying") === "true") {
+  music.currentTime = localStorage.getItem("musicTime") || 0;
+}
+
+window.addEventListener("load", () => {
+  music.play().then(() => {
+    localStorage.setItem("musicPlaying", "true");
+  }).catch(() => {
+    document.addEventListener("click", () => {
+      music.play();
+      localStorage.setItem("musicPlaying", "true");
+    }, { once: true });
+  });
+});
+
+// Save time before leaving page
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+</script>
+
+<script>
+  function goToSurprise() {
+    window.location.href = "surprise.html";
+  }
+</script>
+<script>
+const photos = document.querySelectorAll(".photo img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+photos.forEach(img=>{
+    img.addEventListener("click",()=>{
+        lightbox.style.display="flex";
+        lightboxImg.src=img.src;
+    });
+});
+
+function closeLightbox(){
+    lightbox.style.display="none";
+}
+</script>
+<script>
+setInterval(()=>{
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=Math.random()*20+20+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),5000);
+},500);
+</script>
+</body>
+</html>

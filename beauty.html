@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For You 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: white;
+    }
+
+    .glass-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1.5s ease;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      font-size: 17px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="glass-box">
+  <h1>✨ Just For You ✨</h1>
+
+  <ul>
+    <li>Tu meri life ka ek bohot hi special part hai 💖</li>
+
+    <li>Teri smile sach me kisi ka bhi din better bana sakti hai 😊</li>
+
+    <li>Tu jitni simple hai, utni hi amazing bhi hai 🌸</li>
+
+    <li>Kabhi bhi apne aap ko kam mat samajhna — tu bohot special hai 💫</li>
+
+    <li>Chahe situation koi bhi ho, tu hamesha strong rehna 💪</li>
+
+    <li>Tu hamesha khush rahe, ye hi meri sabse badi wish hai ✨</li>
+
+    <li>Tere sapne ek din zaroor pure honge 🌟</li>
+
+    <li>Bas aise hi haste rehna, kyunki teri smile priceless hai 💕</li>
+
+    <li>Tu deserve karti hai life ka har best moment 💖</li>
+
+    <li>Stay happy, stay shining… always 😊✨</li>
+  </ul>
+
+</div>
+<div class="btn-box">
+  <button onclick="openCake()"> A Small Cake For You🎂</button>
+</div>
+<audio id="bgMusic" loop>
+  <source src="music/music.mp3">
+</audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+// Check if already playing
+if (localStorage.getItem("musicPlaying") === "true") {
+  music.currentTime = localStorage.getItem("musicTime") || 0;
+}
+
+window.addEventListener("load", () => {
+  music.play().then(() => {
+    localStorage.setItem("musicPlaying", "true");
+  }).catch(() => {
+    document.addEventListener("click", () => {
+      music.play();
+      localStorage.setItem("musicPlaying", "true");
+    }, { once: true });
+  });
+});
+
+// Save time before leaving page
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+</script>
+
+<style>
+.btn-box {
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 150px;
+}
+
+.btn-box button {
+  padding: 14px 30px;
+  font-size: 18px;
+  background: linear-gradient(45deg, #ff4da6, #ff99cc);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.btn-box button:hover {
+  transform: scale(1.08);
+}
+</style>
+
+<script>
+function openCake() {
+  window.location.href = "cake.html";
+}
+</script>
+</body>
+</html>
